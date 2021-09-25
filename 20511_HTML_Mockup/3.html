@@ -1,0 +1,33 @@
+<html>
+<title>sign up</title>
+<body bgcolor=skyblue align=center>
+<form>
+<h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+	  <hr>
+      <b>Name</b><br><input required  type="text" placeholder="Your Name" maxlength="15"><br>
+      <b>Age</b><br><input required type="text" placeholder="0-99"  pattern="[0-9]{2}"><br>
+	  <b>Gender</b><br><select  name="options">
+                 <option value="gender">None</option>
+                 <option value="Male">Male</option>
+				 <option value="Female" >Female</option>
+				  <option value="gender">Not TO Disclose</option>
+				 </select><br>
+	  <b>UserName</b><br>
+      <input type="text" placeholder="Enter UserName" name="UserName" required><br>
+	  <b>Email</b><br>
+      <input type="Email" placeholder="Enter Email" name="email" required><br>
+	  <b>Password</b><br>
+      <input type="password" placeholder="Enter Password" name="psw" required><br>
+	  <b>Mobile no<b><br><input type="text" value ="+91" size="2">
+	  <input required type="phone" placeholder="Enter MobileNumber" pattern="[0-9]{10}" ><br>
+    <b>Address</b><br><input required type="text" placeholder="Enter address"> <br>
+      <b>City</b><br><input placeholder="Enter City" required type="text"><br>
+      <b>State</b><br><input required type="text" placeholder="Enter State"><br>
+      <b>Zip</b><br><input required type="text"  pattern="[0-9]{6}" placeholder="Zip code"><br>
+	 <button type="button">Cancel</button>
+        <button type="submit">Sign Up</button>
+		 </hr>
+</form>
+</body>
+</html>  
