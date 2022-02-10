@@ -1,0 +1,69 @@
+﻿@model IEnumerable<OnlineConsultation.Models.Prescription>
+
+@{
+    ViewBag.Title = "Get_Prep";
+}
+
+<p style="height:10px"></p>
+<p style="font-size: xx-large; text-align: center; color: orangered">
+    <img src="~/Images/prep.jpg" style="height:70px;width:70px" /><b><i>Prescription List</i></b>
+</p>
+
+@(Html.Kendo().Button()
+        .Name("button")
+        .Content("Add Prescription &raquo;")
+        .Events(e => e.Click("onClick"))
+)
+
+<script>
+    function onClick() {
+        window.location.href = 'AddPrescription';
+    }
+</script>
+<div class="container-fluid">
+    <div class="tabbed-container">
+        @(Html.Kendo().Grid(Model).Name("Grid")
+               .Columns(columns =>
+               {
+                   columns.Bound(x => x.PrescriptionId).Filterable(ftb => ftb.Multi(true)).Title("Slot Id");
+                   columns.Bound(x => x.DoctorId).Filterable(ftb => ftb.Multi(true));
+                   columns.Bound(x => x.UserId).Title("PatientID").Filterable(ftb => ftb.Multi(true));
+                   columns.Bound(x => x.Prescription1).Filterable(ftb => ftb.Enabled(false));
+               })
+                .ToolBar(ToolBar =>
+                {
+                    //ToolBar.Create().Text("Add Doctors");
+                    //ToolBar.Save();
+                    ToolBar.Search();
+                })
+               .Resizable(resize => resize
+               .Columns(true))
+               .Pageable(pageable =>
+               {
+                   pageable.Refresh(true);
+                   pageable.PageSizes(true);
+               })
+                .Navigatable()
+                 .Sortable()
+                 //.Editable(Editor => Editor.Mode(GridEditMode.InCell))
+                 .Scrollable()
+                 .Filterable()
+                 .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(3)
+                    .ServerOperation(false)
+                    .Model(model =>
+                    {
+                        model.Id(p => p.PrescriptionId);
+                        model.Field(p => p.DoctorId).Editable(true);
+                        model.Field(p => p.UserId).Editable(true);
+                        model.Field(p => p.Prescription1).Editable(true);
+                    })
+                    //.Events(events => events.Error("error_handler"))
+                    .Read(read => read.Action("GetPrescriptionbyDoctorId", "PrescriptionController"))
+    //.Create(create => create.Action("Create", "PrescriptionsController"))
+    //.Update(update => update.Action("Edit", "PrescriptionsController"))
+    //.Destroy(destroy => destroy.Action("Delete", "PrescriptionsController"))
+    )  )
+    </div>
+</div>

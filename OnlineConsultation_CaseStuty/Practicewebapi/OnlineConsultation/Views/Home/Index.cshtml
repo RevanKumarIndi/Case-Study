@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<p style="height:10px"></p>
+
+<p style="height:10px"></p>
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-20 col-xl-11">
+                <div class="card text-black" style="border-radius: 50px;">
+                    <div class="card-body p-md-6">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-1 order-lg-1">
+                                @*<div class="jumbotron">*@
+                                <a style="font-size:400%"><i><b><br />Welcome to<br /> Online Consultation<br /> @Session["DoctorName"].ToString()!!!</b></i></a>
+                                <p></p>
+                                <p><a href="https://localhost:44327/Booking/GetBookingsbyDoctorId" class="btn btn-success btn-lg" style="border-radius: 30px">View Appointments &raquo;</a></p>
+                                @*</div>*@
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-left order-1 order-lg-2">
+                                <img src="~/Images/Mainpage.png" class="img-fluid" alt="image" style="height:400px;width:500px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<div>
+        <div class="jumbotron">
+            <h1><i><b>Welcome to Online Consultation @Session["UserName"].ToString()!!!</b></i></h1>
+            <img src="~/Images/welcomepage.jpg" />
+            <p></p>
+
+            <p><a href="https://localhost:44336/Appointments/Get_Appoint" class="btn btn-success btn-lg" style="border-radius: 30px">View Appointments &raquo;</a></p>
+        </div>
+    </div>*@

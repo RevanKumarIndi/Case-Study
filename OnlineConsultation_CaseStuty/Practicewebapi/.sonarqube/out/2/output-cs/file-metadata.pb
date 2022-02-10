@@ -1,0 +1,12 @@
+P
+GE:\Practicewebapi\Practiceapi_Test\Controllers\BookingControllerTest.csutf-8O
+FE:\Practicewebapi\Practiceapi_Test\Controllers\DoctorControllerTest.csutf-8Q
+HE:\Practicewebapi\Practiceapi_Test\Controllers\FeedbackControllerTest.csutf-8U
+LE:\Practicewebapi\Practiceapi_Test\Controllers\PrescriptionControllerTest.csutf-8K
+BE:\Practicewebapi\Practiceapi_Test\Services\BookingServicesFake.csutf-8J
+AE:\Practicewebapi\Practiceapi_Test\Services\DoctorServicesFake.csutf-8L
+CE:\Practicewebapi\Practiceapi_Test\Services\FeedbackServicesFake.csutf-8P
+GE:\Practicewebapi\Practiceapi_Test\Services\PrescriptionServicesFake.csutf-8}
+rC:\Users\rajar\.nuget\packages\microsoft.net.test.sdk\16.9.4\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.csutf-8m
+bE:\Practicewebapi\Practiceapi_Test\obj\Debug\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.csutf-8_
+TE:\Practicewebapi\Practiceapi_Test\obj\Debug\net5.0\Practiceapi_Test.AssemblyInfo.csutf-8

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<OnlineConsultation.Models.Doctor>
+@{
+    ViewBag.Title = "Doctor";
+}
+
+<p style="height:10px"></p>
+<p style="font-size: xx-large; text-align: center; color: orangered">
+    <img src="~/Images/Doctorlogo.png" style="height:60px;width:60px" /><b><i>Doctors List</i></b>
+</p>
+
+@*@(Html.Kendo().Button()
+        .Name("button")
+        .Content("Add Doctor &raquo;")
+        .Events(e => e.Click("onClick"))
+)
+
+<script>
+        function onClick() {
+            window.location.href = 'Create_Doct';
+        }
+</script>*@
+
+<div class="container-fluid">
+    <div class="tabbed-container">
+        @(Html.Kendo().Grid(Model).Name("Grid").TableHtmlAttributes(new { @class = "table table-striped" })
+           .Columns(columns =>
+           {
+               columns.Bound(x => x.DoctorId);
+               columns.Bound(x => x.DoctorName).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.Gender).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.Specilization).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.PhNo).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.Email).Filterable(ftb => ftb.Enabled(false));
+               //columns.Bound(x => x.id).Title("Details").ClientTemplate(
+               //    @Html.ActionLink("Details", "Details_Doct", "Doctors", new {id = "#=id#"}, htmlAttributes: null).ToHtmlString()
+               //       );
+               //           columns.Bound(x => x.id).Title("Edit").ClientTemplate(
+               //@Html.ActionLink("Edit", "Doct_Edit", "Doctors", new { id = "#=id#" }, htmlAttributes: null).ToHtmlString()
+               //   );
+           })
+             .ToolBar(ToolBar =>
+             {
+                 //ToolBar.Create().Text("Add Doctors");
+                 //ToolBar.Save();
+                 ToolBar.Search();
+             })
+               .Resizable(resize => resize
+               .Columns(true))
+               .Pageable(pageable =>
+               {
+                   pageable.Refresh(true);
+                   pageable.PageSizes(true);
+               })
+                .Navigatable()
+                 .Sortable()
+                 //.Editable(Editor => Editor.Mode(GridEditMode.InCell))
+                 .Scrollable()
+                 .Filterable()
+                 .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(3)
+                    .ServerOperation(false)
+                  .Model(model =>
+                  {
+                      model.Id(p => p.DoctorId);
+                      model.Field(p => p.DoctorName);
+                      model.Field(p => p.Gender).Editable(false);
+                      model.Field(p => p.Specilization).Editable(false);
+                      model.Field(p => p.PhNo).Editable(false);
+                      model.Field(p => p.Email).Editable(false);
+                  })
+                .Read(read => read.Action("GetAllDoctors", "DoctorLoginController"))
+    //.Create(create => create.Action("Create_Doct", "DoctorsController"))
+    //.Update(update => update.Action("Doct_Edit", "DoctorsController"))
+    //.Destroy(destroy => destroy.Action("Delete", "DoctorsController"))
+    //.Read(Read => Read.Action("Details_Doct", "DoctorsController"))
+    )  )
+    </div>
+</div>
+

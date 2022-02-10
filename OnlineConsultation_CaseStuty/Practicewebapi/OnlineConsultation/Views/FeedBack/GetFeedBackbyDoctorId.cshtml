@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OnlineConsultation.Models.FeedBack>
+
+@{
+    ViewBag.Title = "GetFeedBack";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p style="height:10px"></p>
+    <p style="font-size: x-large; text-align: center; color: orangered">
+        <img src="~/Images/feed1.jpg" style="height:70px;width:70px" /><b><i>FeedBack List</i></b>
+    </p>
+
+    <div class="container-fluid">
+        <div class="tabbed-container">
+            @(Html.Kendo().Grid(Model).Name("Grid").TableHtmlAttributes(new { @class = "table table-striped" })
+           .Columns(columns =>
+           {
+               columns.Bound(x => x.FeedBackId).Filterable(ftb => ftb.Multi(true)).Title("Slot Id");
+               columns.Bound(x => x.DoctorId).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.UserId).Title("PatientID").Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.FeedBack1).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.Date).Filterable(ftb => ftb.Enabled(false));
+           })
+           .ToolBar(ToolBar =>
+           {
+               //ToolBar.Create().Text("Add Doctors");
+               //ToolBar.Save();
+               ToolBar.Search();
+           })
+               .Resizable(resize => resize
+               .Columns(true))
+               .Pageable(pageable =>
+               {
+                   pageable.Refresh(true);
+                   pageable.PageSizes(true);
+               })
+                .Navigatable()
+                 .Sortable()
+                 //.Editable(Editor => Editor.Mode(GridEditMode.InCell))
+                 .Scrollable()
+                 .Filterable()
+        .DataSource(dataSource => dataSource.Ajax()
+                .PageSize(3)
+                .ServerOperation(false)
+                .Model(model =>
+                {
+                    model.Id(p => p.FeedBackId);
+                    model.Field(p => p.DoctorId).Editable(true);
+                    model.Field(p => p.UserId).Editable(true);
+                    model.Field(p => p.FeedBack1).Editable(true);
+                    model.Field(p => p.Date).Editable(true);
+                })
+                .Read(read => read.Action("GetFeedBackbyDoctorId", "FeedBackController"))
+
+    )  )
+        </div>
+    </div>
+}

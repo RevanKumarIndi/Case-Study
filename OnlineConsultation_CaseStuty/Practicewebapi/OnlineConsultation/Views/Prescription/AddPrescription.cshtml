@@ -1,0 +1,93 @@
+﻿@model OnlineConsultation.Models.Prescription
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3><b>Add Prescription</b></h3>
+        <div class="form-group">
+            <div class="col-md-10">
+                @(Html.Kendo().TextBoxFor(model => model.DoctorId)
+    .Name("DoctorId")
+    .Label(label => label.Content("DoctorId").Floating(true))
+    .HtmlAttributes(new { placeholder = " Enter a DoctorId", /*@class = "form-control"*/ required = "required", style = "width: 100%;border-radius: 8px;border-color: #ff4d41;" })
+    )
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @(Html.Kendo().TextBoxFor(model => model.UserId)
+        .Name("UserId")
+        .Label(label => label.Content("PatientID").Floating(true))
+        .HtmlAttributes(new { placeholder = "Enter a UserId", /*@class = "form-control"*/required = "required", style = "width: 100%;border-radius: 8px;border-color: #ff4d41;" })
+        )
+                @*@(Html.Kendo().DropDownList()
+                                .Name("Patient")
+                                .HtmlAttributes(new { style = "width: 20%;border-radius: 8px;border-color: #ff4d41;" })
+                                .OptionLabel("Select Patient...")
+                                .DataTextField("patientName")
+                                .DataValueField("id")
+                                .DataSource(source => source
+                                .Custom()
+                                .Transport(transport => transport
+                                        .Read(read =>
+                                        {
+                                            read.Url("https://localhost:44320/api/Prescriptions")
+                                           .DataType("json");
+                                        }))
+                                )
+                    )*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @(Html.Kendo().TextBoxFor(model => model.Prescription1)
+        .Name("Prescription1")
+        .Label(label => label.Content("Prescription1").Floating(true))
+        .HtmlAttributes(new { placeholder = "Enter a Prescription1", /*@class = "form-control"*/ required = "required", style = "width: 100%;border-radius: 8px;border-color: #ff4d41;" })
+        )
+                @*@(Html.Kendo().DropDownList()
+                                .Name("Doctor")
+                                .HtmlAttributes(new { required = "required", style = "width: 20%;border-radius: 8px;border-color: #ff4d41;"})
+                                .OptionLabel("Select Doctor...")
+                                .DataTextField("doctorName")
+                                .DataValueField("id")
+                                .DataSource(source => source
+                                .Custom()
+                                .Transport(transport => transport
+                                        .Read(read =>
+                                        {
+                                            read.Url("https://localhost:44320/api/Doctors/")
+                                           .DataType("json");
+                                        }))
+                                )
+                    )*@
+
+
+            </div>
+        </div>
+        <div class="k-form-group">
+            <div class="col-md-offset-0 col-md-10">
+                <button type="submit" value="Create" class="btn btn-success" style="width:90px">Create</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-offset-0 col-md-30" style="font-size:large">
+    @Html.ActionLink("Back to List", "GetPrescriptionbyDoctorId", "", new { @class = "btn btn-primary" })
+</div>
+
+<script>
+        $(function () {
+            $("form").kendoValidator();
+        });
+</script>

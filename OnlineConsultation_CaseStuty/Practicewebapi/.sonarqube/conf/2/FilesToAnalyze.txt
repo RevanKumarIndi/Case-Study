@@ -1,0 +1,15 @@
+﻿E:\Practicewebapi\Practiceapi_Test\Controllers\BookingControllerTest.cs
+E:\Practicewebapi\Practiceapi_Test\Controllers\DoctorControllerTest.cs
+E:\Practicewebapi\Practiceapi_Test\Controllers\FeedbackControllerTest.cs
+E:\Practicewebapi\Practiceapi_Test\Controllers\PrescriptionControllerTest.cs
+E:\Practicewebapi\Practiceapi_Test\Services\BookingServicesFake.cs
+E:\Practicewebapi\Practiceapi_Test\Services\DoctorServicesFake.cs
+E:\Practicewebapi\Practiceapi_Test\Services\FeedbackServicesFake.cs
+E:\Practicewebapi\Practiceapi_Test\Services\PrescriptionServicesFake.cs
+C:\Users\rajar\.nuget\packages\microsoft.net.test.sdk\16.9.4\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\rajar\.nuget\packages\microsoft.testplatform.testhost\16.9.4\build\netcoreapp2.1\x64\testhost.exe
+C:\Users\rajar\.nuget\packages\microsoft.testplatform.testhost\16.9.4\build\netcoreapp2.1\x64\testhost.dll
+C:\Users\rajar\.nuget\packages\microsoft.testplatform.testhost\16.9.4\build\netcoreapp2.1\x64\Microsoft.TestPlatform.PlatformAbstractions.dll
+C:\Users\rajar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\rajar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\rajar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll

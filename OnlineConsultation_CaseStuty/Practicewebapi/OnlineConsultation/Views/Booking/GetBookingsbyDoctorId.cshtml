@@ -1,0 +1,76 @@
+﻿@model IEnumerable<OnlineConsultation.Models.Booking>
+
+@{
+    ViewBag.Title = "Get_Bookings";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p style="height:10px"></p>
+    <h4><b><u><i>Welcome @Session["DoctorName"].ToString()!!</i></u></b></h4>
+    <p style="font-size: xx-large; text-align: center; color: orangered">
+        <img src="~/Images/4.jpg" style="height:70px;width:70px" /><b><i>Appointments List</i></b>
+    </p>
+
+    <div class="container-fluid">
+        <div class="tabbed-container">
+            @(Html.Kendo().Grid(Model).Name("Grid").TableHtmlAttributes(new { @class = "table table-striped" })
+           .Columns(columns =>
+           {
+               columns.Bound(x => x.UserId).Title("PatientID").Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.DoctorId).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.PatientName).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.Gender).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.Height).Filterable(ftb => ftb.Multi(true));
+               columns.Bound(x => x.Weight).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.Problem).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.Date).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.StartTime).Filterable(ftb => ftb.Enabled(false));
+               columns.Bound(x => x.EndTime).Filterable(ftb => ftb.Enabled(false));
+               //columns.Bound(x => x.UserId).Title("Details").ClientTemplate(
+               //    @Html.ActionLink("Give Prescription", "AddPrescription", "Prescription", new { id = "#=UserId#" }, htmlAttributes: null).ToHtmlString()
+               //       );
+           })
+              .ToolBar(ToolBar =>
+              {
+                  //ToolBar.Create().Text("Add Doctors");
+                  //ToolBar.Save();
+                  ToolBar.Search();
+              })
+               .Resizable(resize => resize
+               .Columns(true))
+               .Pageable(pageable =>
+               {
+                   pageable.Refresh(true);
+                   pageable.PageSizes(true);
+               })
+                .Navigatable()
+                 .Sortable()
+                 //.Editable(Editor => Editor.Mode(GridEditMode.InCell))
+                 .Scrollable()
+                 .Filterable()
+                 .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(3)
+                    .ServerOperation(false)
+                     .Model(model =>
+                     {
+                         model.Id(p => p.BookingId);
+                         model.Field(p => p.UserId).Editable(false);
+                         model.Field(p => p.DoctorId).Editable(false);
+                         model.Field(p => p.PatientName).Editable(false);
+                         model.Field(p => p.Gender).Editable(false);
+                         model.Field(p => p.Height).Editable(false);
+                         model.Field(p => p.Weight).Editable(false);
+                         model.Field(p => p.Problem).Editable(false);
+                         model.Field(p => p.Date).Editable(false);
+                         model.Field(p => p.StartTime).Editable(false);
+                         model.Field(p => p.EndTime).Editable(false);
+                     })
+                .Read(read => read.Action("Get_Bookings", "BookingController"))
+    )  )
+        </div>
+    </div>
+}
